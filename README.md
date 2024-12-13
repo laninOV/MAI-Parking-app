@@ -10,8 +10,8 @@
 ## 🚀 Запуск проекта
 
 ```bash
-git clone <URL вашего репозитория>
-cd <название папки с проектом>
+git clone https://github.com/laninOV/MAI-Parking-app.git
+cd laninOV
 python --version
 pip install -r requirements.txt
 uvicorn main:app --reload --port 8000
