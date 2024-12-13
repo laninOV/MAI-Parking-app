@@ -1,4 +1,1 @@
-{
-    "message": "Hello, FastAPI!",
-    "status": "success"
-}
+{"parking": ["Lot A", "Lot B", "Lot C"]}

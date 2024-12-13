@@ -1,22 +1,17 @@
 from fastapi import FastAPI
-from fastapi.responses import JSONResponse
-import os
-import json
+from api.router import api_router
 
-# Инициализация приложения
 app = FastAPI()
 
-# Путь к JSON файлу
-DATA_FILE = "data.json"
-
-@app.get("/data", response_class=JSONResponse)
-async def get_data():
+@app.get("/", summary="Корневой маршрут")
+async def root():
     """
-    Ручка для возврата содержимого JSON файла.
+    Приветственное сообщение на корневом маршруте.
     """
-    if not os.path.exists(DATA_FILE):
-        return JSONResponse(content={"error": "File not found"}, status_code=404)
+    return {"message": "Welcome to the Parking API!"}
 
-    with open(DATA_FILE, "r", encoding="utf-8") as file:
-        data = json.load(file)
-    return JSONResponse(content=data)
+app.include_router(api_router)
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=8000)
